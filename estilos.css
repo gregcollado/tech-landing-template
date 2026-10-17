@@ -1,0 +1,373 @@
+/* ESTILOS BÁSICOS PARA EL EJERCICIO 
+   Instrucciones: Mejora este diseño, 
+   mejores colores, tipografía y efectos.
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.preload {
+    opacity: 0;
+    transition: opacity 0.4s ease-in; /* Suaviza la aparición */
+}
+
+body {
+    opacity: 1; /* Una vez cargado el CSS, se muestra con total normalidad */
+}
+
+:root {
+  --color-primario: #111111;
+  --color-secundario: #1b2452;
+  --color-terciario: #f7f8fc;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    /* Fondo con overlay oscuro e imagen real */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('img/imagenprinc.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    min-height: 100vh;
+    color: #ffffff; /* Cambiado a blanco para que resalte sobre el fondo oscuro */
+    overflow-X: hidden; /* Evita el scroll */
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+header {
+    background-color: color-mix(in srgb, var(--color-primario) 40%, transparent);
+    color: var(--color-terciario);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 2% 10%;
+    gap: 20vw;
+    backdrop-filter: blur(40px);
+}
+
+header div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    p {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+}
+
+main h1 {
+    color: var(--color-terciario);
+    font-family: 'Inter', sans-serif;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+main p {
+    color: var(--color-terciario);
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor padre */
+    padding: 15px 30px; /* Ajusta el padding lateral según prefieras */
+    box-sizing: border-box; /* Para que el padding no rompa el ancho total */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Separación limpia entre opciones */
+}
+
+nav ul li a {
+    display: block;
+    color: var(--color-terciario);
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin-left: 30px; /* Nota: ya tienes 'gap' arriba, quizás quieras quitar este margin luego */
+    position: relative; /* Indispensable para fijar la línea */
+    transition: color 0.3s ease; /* Transición ligera para el color del texto */
+}
+
+/* 1. Creamos la línea debajo de cada enlace */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Grosor de la línea */
+    bottom: 0;
+    left: 0;
+    background-color: #64b5f6; /* El color azul que elegiste */
+    
+    /* Iniciamos la línea oculta en tamaño cero */
+    transform: scaleX(0);
+    
+    /* Forzamos que se abra desde la IZQUIERDA */
+    transform-origin: left;
+    
+    /* Controla la velocidad del despliegue */
+    transition: transform 0.3s ease-out;
+}
+
+/* 2. Al pasar el cursor, activamos la animación del ::after y cambiamos el texto */
+nav ul li a:hover {
+    color: #64b5f6;
+}
+
+nav ul li a:hover::after {
+    /* Expandimos la línea al 100% de su ancho */
+    transform: scaleX(1);
+}
+
+.contenedor-principal {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: Space-around;
+    align-items: flex-start;
+}
+
+main {
+    width: 100%;
+    padding: 20px;
+    min-height: 400px;
+    position: relative; /* Para permitir el posicionamiento de elementos hijos */
+}
+
+section {
+    position: absolute; 
+    top: 55%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+}
+
+aside {
+    width: 25%;
+    background: color-mix(in srgb, var(--color-primario) 40%, transparent);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    padding: 15px;
+    padding-left: 20px;
+    color: var(--color-terciario);
+    max-height: 60vh; /* Limita la altura del aside */
+    overflow-y: auto; /* Permite scroll si el contenido excede la altura */
+    ul {
+        list-style: none;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        li {
+            margin-bottom: 10px;
+            a {
+                text-decoration: none;
+                color: var(--color-terciario);
+                &:hover {
+                    color: var(--color-secundario);
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: var(--color-primario);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    clear: both; /* Importante para los floats */
+    margin-top: 20px;
+    position: absolute;
+    bottom: -35px;
+    width: 100%;
+}
+
+/* Estilos de ayuda visual */
+.placeholder-img {
+    margin-top: 25px; 
+    overflow: hidden;
+    border-radius: 12px; 
+    
+    img {
+        width: 100%; 
+        max-width: 600px;
+        height: auto;
+        aspect-ratio: 16 / 9; 
+        object-fit: cover; 
+        display: block;
+    }
+}
+
+/* Para navegadores basdos en Chromium (Chrome, Edge, Brave) */
+.noticias-container::-webkit-scrollbar {
+    width: 5px; /* Barra delgada */
+}
+
+.noticias-container::-webkit-scrollbar-track {
+    background: transparent; /* Fondo transparente */
+}
+
+.noticias-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2); /* Color tenue que combina con el tema */
+    border-radius: 10px;
+}
+
+.noticias-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.noticias-container a {
+    color: #64b5f6; /* Un tono azul claro o cian que combine con las luces del teclado */
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.noticias-container a:hover {
+    text-decoration: underline;
+}
+
+.nosotros-content {
+    max-width: 600px; /* Limita el ancho para que la lectura sea cómoda */
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.nosotros-content {
+    position: absolute;
+    top: 20%;
+
+    width: 100%;
+    max-width: 1200px; /* Amplía el contenedor general para que ocupe casi toda la pantalla */
+    margin: 0 auto; 
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual ancho */
+    gap: 20px; /* Espaciado cómodo entre cada tarjeta */
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+
+.mv-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.mv-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #ffffff;
+    padding-top: 10px;
+}
+
+.mv-card p {
+    padding-top: 10px;
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.servicios {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado entre cada servicio */
+    margin-top: 20px;
+}
+
+.noticias-container {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: 25%;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    p{
+        margin-top: 10px;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+input, textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-terciario);
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+button {
+    background-color: var(--color-secundario);
+    color: var(--color-terciario);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.contacto{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    max-width: 800px;
+    padding: 30px;
+    border-radius: 12px;
+    h1, p{
+        text-align: center;
+        font-size: 2.5rem;
+    }
+}
+
+button:hover {
+    background-color: var(--color-primario);
+}
